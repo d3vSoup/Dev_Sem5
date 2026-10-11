@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 
-# A Pandas DataFrame is a 2 dimensional data structure, like a 2 dimensional array, or a table with rows and columns.
+# A Pandas DataFrame is a 2 dimensional data structure, like a 2 dimensional array, or a 
+# table with rows and columns.
 data = {
     'Emp_ID': [101, 102, 103, 104, 105, 106, 107],
     'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva', 'Frank', 'Grace'],
@@ -16,7 +17,8 @@ df = pd.DataFrame(data)
 print("Original DataFrame:")
 print(df)
 
-#named indexing - when rows and column have name (labels) instead of numbers (integers) .. it uses label to select rows and columns
+#named indexing - when rows and column have name (labels) instead of numbers (integers) .. 
+# it uses label to select rows and columns
 # to use named indexing .. we use .loc[]
 
 df=pd.dataFrame(data,index=["emp1","emp2","emp3","emp4","emp5","emp6","emp7"])  
@@ -216,6 +218,9 @@ dropna(df) ... it drops rows/ columns with nan values
 
 Example : 
 '''
+
+
+
 import numpy as np
 import pandas as pd
 

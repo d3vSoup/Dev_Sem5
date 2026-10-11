@@ -10,18 +10,33 @@
 
 
 # Types of Data
-# Structured Data - standardized format of rows and columns that typicallyd efine data attributes. Eg. CSV , DB tables
-# Semi strcutured data - Semi-structured data is a form of structured data that does not obey the tabular structure of data models associated with relational databases or other forms of data tables, but nonetheless contains tags or other markers to separate semantic elements and enforce hierarchies of records and fields within the data. Eg. JSON , XML , PDF 
-# Unstructured Data - Unstructured data is information that either does not have a predefined data model or is not organized in a predefined manner. Eg. Text files, Emails, Social Media posts
-# Streaming Data - Data that is generated continuously by many sources ( in real time ). Such data should be processed incrementally using stream processing techniques without knowing all of the data. This data can be structured, unstructured, semi structured and volume can be huge. Eg. Stock Market Data, Sensor Data, Social Media Feeds
+# Structured Data - standardized format of rows and columns that typicallyd efine data attributes. 
+# Eg. CSV , DB tables
+
+# Semi strcutured data - Semi-structured data is a form of structured data that does not 
+# obey the tabular structure of data models associated with relational databases or other forms of 
+# data tables, but nonetheless contains tags or other markers to separate semantic elements and 
+# enforce hierarchies of records and fields within the data. Eg. JSON , XML , PDF 
+
+# Unstructured Data - Unstructured data is information that either does not have a predefined 
+# data model or is not organized in a predefined manner. Eg. Text files, Emails, Social Media posts
+
+# Streaming Data - Data that is generated continuously by many sources ( in real time ). Such 
+# data should be processed incrementally using stream processing techniques without knowing 
+# all of the data. This data can be structured, unstructured, semi structured and volume can be huge. 
+# Eg. Stock Market Data, Sensor Data, Social Media Feeds
 
 
 
 # Exploratory Data Analysis - EDA 
 
-# Take Raw Data --> Extract main characteristiocs and insights. ( qialitattive and quantitative analysis of raw data ) 
-# EDA is a statistical approach to analyze and summarize the main characteristics of a raw dataset, often with visual methods. 
-# It helps understand data patterns, spot anomalies, test assumptions, and check hypotheses before formal modeling.
+# Take Raw Data --> Extract main characteristiocs and insights. 
+# ( qialitattive and quantitative analysis of raw data ) 
+
+# EDA is a statistical approach to analyze and summarize the main characteristics of a raw dataset,
+# often with visual methods. 
+# It helps understand data patterns, spot anomalies, test assumptions, and check hypotheses 
+# before formal modeling.
 # used to determine relationship between variables and handle missing values asw.
 
 '''
@@ -39,7 +54,7 @@ Data insight - > Extracted from raw Data in a meaningful and useful format.
    
                 data - > Analytics -> Insights
 
-Customer shopping se we get - > maket strategies, products , overall customer experinece , age, gender, history of purchase, preferred payment , 
+Customer shopping se we get - > maket strategies, products , overall customer experinece ,      age, gender, history of purchase, preferred payment , 
                                frew pf purchases , and can enhance product offerings and enghance customer satisfaction
 
 

@@ -12,8 +12,131 @@ The primary causes are:
 
 
 
+Spatially.. entire row can be.. entire column can be... or parts of row and column can be
 
 
+Count nan values per column :  df.isnull().sum()... true is 1 and Falsoe is 0 
+
+count nan over entire DF : df.isnull().sum().sum()          # Slide excerpt: "To find the total number of missing values"
+
+Count non missing values / reported va;llues per column : df.count()               # Slide excerpt: "To count the number of reported values"
+
+Count NAN values in a specific column :   df['Column_Name'].isnull().sum()
+
+
+
+
+Removing Missing data : 
+"The dropna() method just returns a copy of the dataframe by dropping the rows with NaN. The original dataframe is not changed."
+
+Syntax :    dataframe.dropna(axis, how, thresh, subset, inplace)  
+
+
+axis : 0 or 'index' (default); 1 or 'columns'   ->   0 drops rows with nulls; 1 drops columns with nulls. 
+
+how :  'any' (default); 'all'  ->  'any' drops if even one null exists; 'all' drops only if every element in that row/col is null.  
+
+thresh : Integer $N$   ->   Sets the required number of non-null values; keeps the row/col only if it has at least $N$ valid entries.   
+df.dropna(thresh=4)  # Drops rows that have fewer than 4 non-null values
+
+subset : List of column/row names  ->   Restricts the null search to specific target columns or indices.   
+
+inplace : False (default); True   ->   True alters the original DataFrame directly; False returns a modified copy.    
+df.dropna(subset=['Salary'], inplace=True)  
+
+
+
+
+
+
+Pandas vs NumPy on missing values : 
+
+"When a NumPy function encounters NaN values, it returns NaN."  
+
+"Pandas, on the other hand, ignores the NaN values and moves ahead with processing. When performing the sum operation, 
+NaN is treated as 0. If all the values are NaN, the result is also NaN."   
+
+import numpy as np
+import pandas as pd
+ar1 = np.array([100, 200, np.nan, 300])  
+ser1 = pd.Series(ar1)                    
+ar1.mean()   # Returns: nan             
+ser1.mean()  # Returns: 200.0 (ignores NaN: (100 + 200 + 300) / 3)
+
+
+
+Cumulative Sum : 
+
+Pandas cumsum() function is used to calculate the cumulative sum of the elements in a DataFrame or Series.
+Syntax :  DataFrame.cumsum(axis=None, skipna=True, level=None, numeric_only=None, **kwargs)
+
+When calculating ser.cumsum(), non-null values accumulate up to the first valid observation, while indices containing NaN persist as NaN unless 
+followed by subsequent values.
+
+
+
+
+fillna() and interpolate()
+
+filledDf = df.fillna(0)  what does this do ? -> it fills the nan values with 0.. Slide Excerpt: "There are slightly different values. Hence, filling with 0 might not be the optimal solution."  
+                            Explanation: Imputing zeros artificially pulls the distribution and reduces column means (e.g., dropping a mean from 20.0 to 17.14).  
+
+
+Filling - 
+        Forward fill ( ffill ) : Propagates the last valid observation forward.   
+                                 Along Rows (axis=0 / index axis): Copies the value from the preceding row downward.   
+                                 Slide Excerpt: "Values in the first row is still NaN value because there is no row above it from which non-NA value could be propagated"   
+                                 Along Columns (axis=1):Slide Excerpt: "When ffill is applied across the column axis, then missing values are filled by the value in previous column in the same row."   
+
+
+
+
+        Backward Fill (bfill) : Propagates the next valid observation backward.
+                                Along Rows (axis=0 / index axis): Copies the value from the subsequent row upward.
+                                Along Columns (axis=1): Replaces NaN with the first valid value encountered when scanning from right to left in the same row.
+                            
+
+
+
+Interpolation : interpolate()
+        "Linear interpolation is a method for calculating intermediate data between known values"  
+        fill_value:float, value in the sequence of index values to be interpolated.
+                
+        y = y1 + (x-x1)(y2-y1) / (x2-x1)
+                x1, y1 represent the first known coordinates.   
+                x2, y2 represent the second known coordinates.   
+                x represents the target index point, and y is the computed value. 
+
+    eg . ser3 = pd.Series([100, np.nan, np.nan, np.nan, 292])  #
+         ser3.interpolate()                                    # Slide Excerpt: "Using the interpolate() method, we can fill the NaN values with an estimated value"
+
+
+# Known endpoints: Index 0 is 100, and index 4 is 292.   Step interval: 
+# Step = (292 - 100) / (4 - 0) = (192) / 4 = 48
+# Intermediate values:
+# Index 1: 100 + 48 = 148.0
+# Index 2: 148 + 48 = 196.0
+# Index 3: 196 + 48 = 244.0
+# Index 4: 292.0
+
+
+
+Statistical Imputation (Slides 100–103)
+Imputing missing entries using summary statistics prevents distortion of the broader dataset distribution:
+
+# DataFrame-wide imputation syntax:
+data = data.fillna(data.mean())    # Impute using mean[cite: 101]
+data = data.fillna(data.median())  # Impute using median[cite: 101]
+data = data.fillna(data.std())     # Impute using standard deviation[cite: 101]
+data = data.fillna(data.min())     # Impute using minimum value[cite: 101]
+data = data.fillna(data.max())     # Impute using maximum value[cite: 101]
+
+# Column-specific imputation syntax:
+data['quantity'] = data['quantity'].fillna(data['quantity'].mean())    #[cite: 102]
+data['price']    = data['price'].fillna(data['price'].median())        #[cite: 102]
+data['bought']   = data['bought'].fillna(data['bought'].std())         #[cite: 102]
+data['forenoon'] = data['forenoon'].fillna(data['forenoon'].min())     #[cite: 102]
+data['afternoon']= data['afternoon'].fillna(data['afternoon'].max())   #[cite: 102]
 
 '''
 
