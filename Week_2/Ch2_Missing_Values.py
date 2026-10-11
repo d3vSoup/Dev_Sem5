@@ -1,3 +1,23 @@
+''' NAN
+
+
+In pandas, missing values appear as NaN (Not a Number), representing absent or undefined values. 
+
+The primary causes are:   
+            External retrieval issues: Extracting incomplete records from outside data sources.   
+            Join mismatches: Merging datasets where keys in one table do not exist in the other.   
+            Data collection errors: Hardware sensor failures, dropped packets, or manual omissions.   
+            Dimensional structural shifts: Reshaping or unstacking operations that introduce unpopulated grid intersections.   
+            Reindexing: Aligning an existing series/table against a new index set.
+
+
+
+
+
+
+'''
+
+
 # ==============================================================================
 # MISSING VALUES IN PANDAS (FRUIT STORE INVENTORY - DESI EDITION)
 # ==============================================================================
@@ -33,6 +53,8 @@ pd.set_option('future.no_silent_downcasting', True)
 fruits = ['Apple', 'Orange', 'Watermelon', 'Banana', 'Mango', 'Grapes']
 stores = ['Store_1', 'Store_2', 'Store_3', 'Store_4', 'Store_5']
 
+#how is it making the fruits and stores to make a dataframe ?
+# ans - the fruits are making index (rows) and the stores are making columns and the numbers are the values in the cells
 # Data grid banana:
 fruit_data = np.arange(10, 40).reshape(6, 5)
 
@@ -86,7 +108,8 @@ print(df)
 
 
 
-
+# difference between isna() and isnull() ?
+# ans - There is absolutely no difference between .isna() and .isnull(). Both functions are exactly identical and do the same thing in Pandas.
 
 # ==============================================================================
 # 3. MISSING VALUES DHOONDNA: isna(), isnull(), AUR notnull()
@@ -137,14 +160,16 @@ print(df[df['Store_1'].notnull()][['Store_1']])
 # 3D. Full DataFrame ka Grand Total Missing Count:
 print("\n--- 3D. Grand Total of Missing Values in Full DataFrame ---")
 print("Pehla .sum() (Har column ka): \n", df.isnull().sum())
-print("\nDoosra .sum() (.isnull().sum().sum()) -> Grand Total:", df.isnull().sum().sum())
+print("\nDoosra .sum() (.isnull().sum().sum()) -> Grand Total:", df.isnull().sum().sum()) 
+#why two sum ??
+# ans - First .sum() gives count of null values in each column. 
+# Second .sum() gives the sum of all the counts of null values in each column.
 print("Alternative trick (df.isnull().values.sum()):", df.isnull().values.sum())
 
 
 # 3E. Sirf wahi fruits dikhao jisme kahin na kahin NaN hai:
 print("\n--- 3E. Missing stock wale fruits (using .isnull().any(axis=1)) ---")
 print(df[df.isnull().any(axis=1)])
-
 
 
 
@@ -327,7 +352,6 @@ df_custom = df.fillna({
 })
 print("\n--- 5E. fillna(dict) - Har store ka apna custom fill number ---")
 print(df_custom)
-
 
 
 
