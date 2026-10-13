@@ -314,12 +314,14 @@ classical DA vs EDA vs Bayesian
 Classical : problem define --> Data collect --> model development --> Data analysis --> results 
 thus, its hypothesis driven .. eg . A medical researcher believes a new puill lowers blood prresssure. So they set up stat model firsr, test patinets , analyse results to see if hypothesis is right.. publish findings 
 
+
+
 EDA : problem define --> Data collect --> Data analysis --> Model development / Data visualisation --> results 
 thus, its data driven .. eg . A data analyst picks up a dataset and starts exploring it using graphs and summaries to see what patterns emerge... thus discover trend and algos
+        
 
 
 Bayesian : problem define -> Data collect --> Model Dev --> prior distribution --> Data analysis --> posterior distribution -> Update prior distribution --> final results / inference 
-
 How it works: You set up a model and combine existing beliefs (Prior Distribution) with new data to update your conclusions.
 eg.  A meteorologist predicts tomorrow's rain chance. They start with historical weather records (prior belief ) combine with current weather data (likelihood) and calculate updated probability (posterior).. and communicate the forecast 
 
