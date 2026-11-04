@@ -222,3 +222,4 @@ plt.show()
 #    - 'viridis'  : Purple -> Teal -> Yellow (perceptually uniform)
 #    - 'rocket'   : Dark to bright neon
 # ==============================================================================
+
