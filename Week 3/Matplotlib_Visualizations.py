@@ -203,6 +203,8 @@ plt.show()
 # so basically if i want  to plot a  graph or a picture then i have to import matplotlib 
 # and if i want to plot a graph  or a picture using numpy then i have to import numpy 
 
-
+# when numoy and when matplotlib ?
+# numoy used when there is mathematical formulae or mathematical equations involved 
+#  matplotlib is used for plotting the graphs
 
 
