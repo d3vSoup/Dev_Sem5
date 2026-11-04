@@ -18,6 +18,7 @@
 
 import pandas as pd
 import plotly.express as px
+#plotly is main package and express is sub package
 
 # ------------------------------------------------------------------------------
 # 1. GEOGRAPHIC CHOROPLETH MAP: Global GDP per Capita
